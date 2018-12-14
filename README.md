@@ -20,6 +20,6 @@
 
 predict() 填充为定长序列、每句返回 (word, pred) 的二元组
 
-#### 6.interface
+#### 6.verify
 
 merge() 将 BIO 标签组合为实体，response() 返回 json 字符串
