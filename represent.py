@@ -5,7 +5,6 @@ import numpy as np
 
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-from keras.utils import to_categorical
 
 from util import sent2label
 
@@ -77,18 +76,15 @@ def align_sent(sents, path_sent, extra):
 def align_label(sents, path_label):
     with open(path_label_ind, 'rb') as f:
         label_inds = pk.load(f)
-    class_num = len(label_inds)
     ind_mat = list()
     for quaples in sents.values():
         inds = list()
         for quaple in quaples:
             inds.append(label_inds[quaple['label']])
-        pad_inds = pad_sequences([inds], maxlen=seq_len)[0]
-        pad_inds = to_categorical(pad_inds, num_classes=class_num)
-        ind_mat.append(pad_inds)
-    ind_mat = np.array(ind_mat)
+        ind_mat.append(inds)
+    pad_inds = pad_sequences(ind_mat, maxlen=seq_len)
     with open(path_label, 'wb') as f:
-        pk.dump(ind_mat, f)
+        pk.dump(pad_inds, f)
 
 
 def vectorize(path_data, path_cnn_sent, path_rnn_sent, path_label):
