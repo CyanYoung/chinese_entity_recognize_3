@@ -1,0 +1,28 @@
+{
+    "我找一连张伟": [
+        {
+            "word": "我",
+            "label": "O"
+        },
+        {
+            "word": "找",
+            "label": "O"
+        },
+        {
+            "word": "一",
+            "label": "B-ORG"
+        },
+        {
+            "word": "连",
+            "label": "I-ORG"
+        },
+        {
+            "word": "张",
+            "label": "B-PER"
+        },
+        {
+            "word": "伟",
+            "label": "I-PER"
+        }
+    ]
+}

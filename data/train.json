@@ -1,0 +1,268 @@
+{
+    "帮我转接到二营": [
+        {
+            "word": "帮",
+            "label": "O"
+        },
+        {
+            "word": "我",
+            "label": "O"
+        },
+        {
+            "word": "转",
+            "label": "O"
+        },
+        {
+            "word": "接",
+            "label": "O"
+        },
+        {
+            "word": "到",
+            "label": "O"
+        },
+        {
+            "word": "二",
+            "label": "B-ORG"
+        },
+        {
+            "word": "营",
+            "label": "I-ORG"
+        }
+    ],
+    "我找刘营长": [
+        {
+            "word": "我",
+            "label": "O"
+        },
+        {
+            "word": "找",
+            "label": "O"
+        },
+        {
+            "word": "刘",
+            "label": "B-PER"
+        },
+        {
+            "word": "营",
+            "label": "B-POS"
+        },
+        {
+            "word": "长",
+            "label": "I-POS"
+        }
+    ],
+    "我查陈芳的电话": [
+        {
+            "word": "我",
+            "label": "O"
+        },
+        {
+            "word": "查",
+            "label": "O"
+        },
+        {
+            "word": "陈",
+            "label": "B-PER"
+        },
+        {
+            "word": "芳",
+            "label": "I-PER"
+        },
+        {
+            "word": "的",
+            "label": "O"
+        },
+        {
+            "word": "电",
+            "label": "O"
+        },
+        {
+            "word": "话",
+            "label": "O"
+        }
+    ],
+    "我找宣传部的李明": [
+        {
+            "word": "我",
+            "label": "O"
+        },
+        {
+            "word": "找",
+            "label": "O"
+        },
+        {
+            "word": "宣",
+            "label": "B-ORG"
+        },
+        {
+            "word": "传",
+            "label": "I-ORG"
+        },
+        {
+            "word": "部",
+            "label": "I-ORG"
+        },
+        {
+            "word": "的",
+            "label": "O"
+        },
+        {
+            "word": "李",
+            "label": "B-PER"
+        },
+        {
+            "word": "明",
+            "label": "I-PER"
+        }
+    ],
+    "我查一团王团长的办公室电话": [
+        {
+            "word": "我",
+            "label": "O"
+        },
+        {
+            "word": "查",
+            "label": "O"
+        },
+        {
+            "word": "一",
+            "label": "B-ORG"
+        },
+        {
+            "word": "团",
+            "label": "I-ORG"
+        },
+        {
+            "word": "王",
+            "label": "B-PER"
+        },
+        {
+            "word": "团",
+            "label": "B-POS"
+        },
+        {
+            "word": "长",
+            "label": "I-POS"
+        },
+        {
+            "word": "的",
+            "label": "O"
+        },
+        {
+            "word": "办",
+            "label": "B-TYP"
+        },
+        {
+            "word": "公",
+            "label": "I-TYP"
+        },
+        {
+            "word": "室",
+            "label": "I-TYP"
+        },
+        {
+            "word": "电",
+            "label": "O"
+        },
+        {
+            "word": "话",
+            "label": "O"
+        }
+    ],
+    "党委办公室的电话是多少": [
+        {
+            "word": "党",
+            "label": "B-ORG"
+        },
+        {
+            "word": "委",
+            "label": "I-ORG"
+        },
+        {
+            "word": "办",
+            "label": "B-TYP"
+        },
+        {
+            "word": "公",
+            "label": "I-TYP"
+        },
+        {
+            "word": "室",
+            "label": "I-TYP"
+        },
+        {
+            "word": "的",
+            "label": "O"
+        },
+        {
+            "word": "电",
+            "label": "O"
+        },
+        {
+            "word": "话",
+            "label": "O"
+        },
+        {
+            "word": "是",
+            "label": "O"
+        },
+        {
+            "word": "多",
+            "label": "O"
+        },
+        {
+            "word": "少",
+            "label": "O"
+        }
+    ],
+    "三排杨勇的手机号码是多少": [
+        {
+            "word": "三",
+            "label": "B-ORG"
+        },
+        {
+            "word": "排",
+            "label": "I-ORG"
+        },
+        {
+            "word": "杨",
+            "label": "B-PER"
+        },
+        {
+            "word": "勇",
+            "label": "I-PER"
+        },
+        {
+            "word": "的",
+            "label": "O"
+        },
+        {
+            "word": "手",
+            "label": "B-TYP"
+        },
+        {
+            "word": "机",
+            "label": "I-TYP"
+        },
+        {
+            "word": "号",
+            "label": "O"
+        },
+        {
+            "word": "码",
+            "label": "O"
+        },
+        {
+            "word": "是",
+            "label": "O"
+        },
+        {
+            "word": "多",
+            "label": "O"
+        },
+        {
+            "word": "少",
+            "label": "O"
+        }
+    ]
+}
