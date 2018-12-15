@@ -49,7 +49,7 @@ def response(text, name):
     data = dict()
     pairs = predict(text, name)
     slot_dict = merge(pairs)
-    data['text'] = text
+    data['content'] = text
     data['slot'] = slot_dict
     data_str = json.dumps(data, ensure_ascii=False)
     logger.info(data_str)
