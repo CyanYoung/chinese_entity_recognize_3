@@ -38,9 +38,7 @@ funcs = {'cnn': cnn,
          'rnn': rnn}
 
 paths = {'cnn': 'model/cnn.h5',
-         'rnn': 'model/rnn.h5',
-         'cnn_plot': 'model/plot/cnn.png',
-         'rnn_plot': 'model/plot/rnn.png'}
+         'rnn': 'model/rnn.h5'}
 
 models = {'cnn': load_model(map_item('cnn', paths)),
           'rnn': load_model(map_item('rnn', paths))}

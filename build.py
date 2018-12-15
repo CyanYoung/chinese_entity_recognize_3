@@ -8,7 +8,7 @@ from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint
 from keras.utils import plot_model
 
-from nn_arch import rnn, cnn
+from nn_arch import cnn, rnn
 
 from util import map_item
 
