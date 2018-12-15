@@ -2,59 +2,55 @@ import json
 
 from recognize import predict
 
-from util import load_word, load_pair, get_logger
+from util import load_pair, get_logger
 
 
-path_slot = 'dict/slot.txt'
 path_zh_en = 'dict/zh_en.csv'
-slots = load_word(path_slot)
 zh_en = load_pair(path_zh_en)
 
 path_log_dir = 'log'
 logger = get_logger('recognize', path_log_dir)
 
 
-def init_entity(slots):
-    entitys = dict()
-    for slot in slots:
-        entitys[slot] = list()
-    return entitys
+def insert(entity, label, entitys, slots):
+    entitys.append(entity)
+    slots.append(zh_en[label])
 
 
-def insert(entity, label, fill_slots, entitys):
-    slot = zh_en[label]
-    fill_slots.append(slot)
-    entitys[slot].append(entity)
+def make_dict(entitys, slots):
+    slot_dict = dict()
+    for slot, entity in zip(slots, entitys):
+        if slot not in slot_dict:
+            slot_dict[slot] = list()
+        slot_dict[slot].append(entity)
+    return slot_dict
 
 
 def merge(pairs):
-    entitys = init_entity(slots)
-    fill_slots = list()
+    entitys, slots = list(), list()
     entity, label = [''] * 2
     for word, pred in pairs:
         if pred[0] == 'B':
             if entity:
-                insert(entity, label, fill_slots, entitys)
+                insert(entity, label, entitys, slots)
             entity = word
             label = pred[2:]
         elif pred[0] == 'I':
             entity = entity + word
-        else:
-            if entity:
-                insert(entity, label, fill_slots, entitys)
-                entity = ''
+        elif entity:
+            insert(entity, label, entitys, slots)
+            entity = ''
     if entity:
-        insert(entity, label, fill_slots, entitys)
-    return entitys, fill_slots
+        insert(entity, label, entitys, slots)
+    return make_dict(entitys, slots)
 
 
 def response(text, name):
     data = dict()
     pairs = predict(text, name)
-    entitys, fill_slots = merge(pairs)
-    data['content'] = text
-    data['intent'] = '_'.join(fill_slots)
-    data['entity'] = entitys
+    slot_dict = merge(pairs)
+    data['text'] = text
+    data['slot'] = slot_dict
     data_str = json.dumps(data, ensure_ascii=False)
     logger.info(data_str)
     return data_str
