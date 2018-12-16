@@ -2,7 +2,7 @@
 
 #### 1.preprocess
 
-
+label_sent() 查找 entity 索引、进行标注，打乱后划分训练、测试集
 
 #### 2.explore
 
@@ -10,11 +10,11 @@
 
 #### 3.represent
 
-
+label2ind() 增设标签 N，add_buf() 再对 cnn_sent 头部、尾部进行填充
 
 #### 4.build
 
-
+train 80% / dev 20% 划分，通过 cnn、rnn 构建实体识别模型
 
 #### 5.recognize
 
