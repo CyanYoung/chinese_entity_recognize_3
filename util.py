@@ -17,6 +17,16 @@ def load_pair(path):
     return vocab
 
 
+def load_poly(path):
+    vocab = dict()
+    for word, cand_str in pd.read_csv(path).values:
+        if word not in vocab:
+            vocab[word] = set()
+        cands = cand_str.split('/')
+        vocab[word].update(cands)
+    return vocab
+
+
 def sent2label(pairs):
     label = list()
     for pair in pairs:
