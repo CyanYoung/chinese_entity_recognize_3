@@ -30,12 +30,12 @@ def merge(pairs):
     entitys, slots = list(), list()
     entity, label = [''] * 2
     for word, pred in pairs:
-        if pred[0] == 'B':
+        if pred[:2] == 'B-':
             if entity:
                 insert(entity, label, entitys, slots)
             entity = word
             label = pred[2:]
-        elif pred[0] == 'I':
+        elif pred[:2] == 'I-' and entity:
             entity = entity + word
         elif entity:
             insert(entity, label, entitys, slots)
