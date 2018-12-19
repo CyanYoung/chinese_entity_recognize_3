@@ -1,12 +1,12 @@
 text,entity,label
-上海市虹口区大连路817号,上海市 虹口区 大连路 817号,CITY DIST ROAD NUM
-上海市黄浦区兴业路150号,上海市 黄浦区 兴业路 150号,CITY DIST ROAD NUM
-上海市静安区南京西路1376号,上海市 静安区 南京西路 1376号,CITY DIST ROAD NUM
-北京市昌平区沙河镇天利家园,北京市 昌平区 沙河镇 天利家园,CITY DIST TOWN AREA
-北京市东城区朝阳门内大街9号,北京市 东城区 朝阳门内大街 9号,CITY DIST ROAD NUM
+上海市虹口区大连路,上海市 虹口区 大连路,CITY DIST ROAD
+上海市黄浦区兴业路,上海市 黄浦区 兴业路,CITY DIST ROAD
+上海市静安区南京西路,上海市 静安区 南京西路,CITY DIST ROAD
+北京市昌平区沙河镇,北京市 昌平区 沙河镇,CITY DIST TOWN
+北京市东城区朝阳门内大街,北京市 东城区 朝阳门内大街,CITY DIST ROAD
 北京市东城区春雨胡同,北京市 东城区 春雨胡同,CITY DIST ROAD
-上海市松江区新乐路48号,上海市 松江区 新乐路 48号,CITY DIST ROAD NUM
-北京市海淀区西土城路10号北京邮电大学,北京市 海淀区 西土城路 10号 北京邮电大学,CITY DIST ROAD NUM UNIV
+上海市松江区新乐路,上海市 松江区 新乐路,CITY DIST ROAD
+北京市海淀区西土城路,北京市 海淀区 西土城路,CITY DIST ROAD
 浙江省温州市瓯海区新塘路,浙江省 温州市 瓯海区 新塘路,PROV CITY DIST ROAD
 广东省梅州市兴宁市叶塘镇田心村,广东省 梅州市 兴宁市 叶塘镇 田心村,PROV CITY DIST TOWN VILL
 山西省朔州市右玉县右卫镇姬家沟村,山西省 朔州市 右玉县 右卫镇 姬家沟村,PROV CITY DIST TOWN VILL
@@ -14,7 +14,7 @@ text,entity,label
 重庆市永川区双竹镇石梯坎村,重庆市 永川区 双竹镇 石梯坎村,CITY DIST TOWN VILL
 四川省巴中市巴州区福星乡阳岭村,四川省 巴中市 巴州区 福星乡 阳岭村,PROV CITY DIST TOWN VILL
 广东省肇庆市怀集县桥头镇新兴村,广东省 肇庆市 怀集县 桥头镇 新兴村,PROV CITY DIST TOWN VILL
-辽宁省大连市瓦房店市杨家乡杨家村1队,辽宁省 大连市 瓦房店市 杨家乡 杨家村 1队,PROV CITY DIST TOWN VILL GROUP
+辽宁省大连市瓦房店市杨家乡杨家村1队,辽宁省 大连市 瓦房店市 杨家乡 杨家村,PROV CITY DIST TOWN VILL
 河北省石家庄市平山县下槐镇,河北省 石家庄市 平山县 下槐镇,PROV CITY DIST TOWN
 湖北省孝感市孝昌县顺民村,湖北省 孝感市 孝昌县 顺民村,PROV CITY DIST VILL
 江苏省苏州市平江区红枫路,江苏省 苏州市 平江区 红枫路,PROV CITY DIST ROAD
