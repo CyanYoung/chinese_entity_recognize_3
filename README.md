@@ -2,7 +2,9 @@
 
 #### 1.preprocess
 
-label_sent() 查找 entity 索引、进行标注，打乱后划分训练、测试集
+generate() 根据 template 采样实体进行填充、生成数据，() 表示可省去
+
+label_sent() 对 extra 查找 entity 索引进行标注、添加到训练数据
 
 #### 2.explore
 
