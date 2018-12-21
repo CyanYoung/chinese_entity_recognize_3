@@ -110,18 +110,20 @@ def label_sent(path):
     return sents
 
 
-def expand(word_mat, label_mat, extra_sents):
+def expand(sents, gen_word_mat, gen_label_mat):
+    word_mat, label_mat = dict2list(sents)
+    word_mat.extend(gen_word_mat)
+    label_mat.extend(gen_label_mat)
     word_mat, label_mat = sync_shuffle(word_mat, label_mat)
     bound = int(len(word_mat) * 0.9)
     train_sents = list2dict(word_mat[:bound], label_mat[:bound])
-    train_sents.update(extra_sents)
     test_sents = list2dict(word_mat[bound:], label_mat[bound:])
     return train_sents, test_sents
 
 
 def prepare(paths):
     temps = list()
-    with open(paths['template'], 'r') as f:
+    with open(paths['temp'], 'r') as f:
         for line in f:
             parts = line.strip().split()
             temps.append(parts)
@@ -133,18 +135,18 @@ def prepare(paths):
         with open(os.path.join(paths['slot_dir'], file), 'r') as f:
             for line in f:
                 slots[label].append(line.strip())
-    word_mat, label_mat = generate(temps, slots, num=5000)
-    extra_sents = label_sent(paths['extra'])
-    train_sents, test_sents = expand(word_mat, label_mat, extra_sents)
+    gen_word_mat, gen_label_mat = generate(temps, slots, num=5000)
+    sents = label_sent(paths['univ'])
+    train_sents, test_sents = expand(sents, gen_word_mat, gen_label_mat)
     save(paths['train'], train_sents)
     save(paths['test'], test_sents)
 
 
 if __name__ == '__main__':
     paths = dict()
+    paths['univ'] = 'data/univ.csv'
     paths['train'] = 'data/train.json'
     paths['test'] = 'data/test.json'
-    paths['template'] = 'data/template.txt'
+    paths['temp'] = 'data/template.txt'
     paths['slot_dir'] = 'data/slot'
-    paths['extra'] = 'data/extra.csv'
     prepare(paths)

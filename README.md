@@ -4,7 +4,7 @@
 
 generate() 根据 template 采样实体进行填充、生成数据，() 表示可省去
 
-label_sent() 通过 finditer() 查找 entity 索引进行标注、添加到训练数据
+label_sent() 通过 finditer() 查找 entity 索引进行标注，汇总、打乱
 
 #### 2.explore
 
