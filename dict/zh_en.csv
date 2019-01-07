@@ -1,9 +1,7 @@
 zh,en
 省,PROV
-省级市,PROV_CITY
 市,CITY
 县,DIST
-县级市,DIST_CITY
 街,ROAD
 镇,TOWN
 村,VILL
