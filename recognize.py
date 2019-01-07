@@ -21,12 +21,9 @@ def ind2label(label_inds):
 seq_len = 50
 
 path_word2ind = 'model/word2ind.pkl'
-path_embed = 'feat/embed.pkl'
 path_label_ind = 'feat/label_ind.pkl'
 with open(path_word2ind, 'rb') as f:
     word2ind = pk.load(f)
-with open(path_embed, 'rb') as f:
-    embed_mat = pk.load(f)
 with open(path_label_ind, 'rb') as f:
     label_inds = pk.load(f)
 
