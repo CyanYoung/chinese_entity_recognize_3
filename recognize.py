@@ -8,8 +8,6 @@ from keras.preprocessing.sequence import pad_sequences
 
 from represent import add_buf
 
-from nn_arch import cnn, rnn
-
 from util import map_item
 
 
@@ -33,9 +31,6 @@ with open(path_label_ind, 'rb') as f:
     label_inds = pk.load(f)
 
 ind_labels = ind2label(label_inds)
-
-funcs = {'cnn': cnn,
-         'rnn': rnn}
 
 paths = {'cnn': 'model/cnn.h5',
          'rnn': 'model/rnn.h5'}
