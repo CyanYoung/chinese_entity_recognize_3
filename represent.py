@@ -77,10 +77,10 @@ def align_label(sents, path_label):
     with open(path_label_ind, 'rb') as f:
         label_inds = pk.load(f)
     ind_mat = list()
-    for quaples in sents.values():
+    for pairs in sents.values():
         inds = list()
-        for quaple in quaples:
-            inds.append(label_inds[quaple['label']])
+        for pair in pairs:
+            inds.append(label_inds[pair['label']])
         ind_mat.append(inds)
     pad_inds = pad_sequences(ind_mat, maxlen=seq_len)
     with open(path_label, 'wb') as f:
