@@ -92,9 +92,9 @@ def vectorize(path_data, path_cnn_sent, path_rnn_sent, path_label):
         sents = json.load(f)
     embed(sents, path_word2ind, path_word_vec, path_embed)
     label2ind(sents, path_label_ind)
-    align_label(sents, path_label)
     align_sent(sents, path_cnn_sent, extra=True)
     align_sent(sents, path_rnn_sent, extra=False)
+    align_label(sents, path_label)
 
 
 if __name__ == '__main__':
