@@ -22,6 +22,6 @@ train 80% / dev 20% 划分，通过 cnn、rnn 构建实体识别模型
 
 predict() 填充为定长序列、每句返回 (word, pred) 的二元组
 
-#### 6.verify
+#### 6.interface
 
 merge() 将 BIO 标签组合为实体，response() 返回 json 字符串
