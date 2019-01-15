@@ -5,7 +5,7 @@ win_len = 7
 
 
 def cnn(embed_input, class_num):
-    conv = Conv1D(filters=128, kernel_size=win_len, padding='valid', activation=None)
+    conv = Conv1D(filters=128, kernel_size=win_len, padding='valid')
     gate = Conv1D(filters=128, kernel_size=win_len, padding='valid', activation='sigmoid')
     da1 = Dense(200, activation='relu')
     da2 = Dense(class_num, activation='softmax')
