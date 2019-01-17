@@ -1,7 +1,6 @@
-zh,en
-省,PROV
-市,CITY
-县,DIST
-街,ROAD
-镇,TOWN
-村,VILL
+﻿zh,en
+人名,PER
+地区,LOC
+机构,ORG
+类别,TYP
+职位,POS
