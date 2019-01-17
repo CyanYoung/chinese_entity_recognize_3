@@ -7,11 +7,15 @@ import re
 
 from random import shuffle, choice
 
-from util import load_pair
+from util import load_pair, load_poly
 
 
 path_zh_en = 'dict/zh_en.csv'
+path_homo = 'dict/homo.csv'
+path_syno = 'dict/syno.csv'
 zh_en = load_pair(path_zh_en)
+homo_dict = load_poly(path_homo)
+syno_dict = load_poly(path_syno)
 
 
 def save(path, sents):
@@ -46,7 +50,16 @@ def list2dict(word_mat, label_mat):
 
 
 def select(part):
-    if part[0] == '(' and part[-1] == ')':
+    if part[0] == '[' and part[-1] == ']':
+        word = part[1:-1]
+        cands = set()
+        cands.add(word)
+        if word in syno_dict:
+            cands.update(syno_dict[word])
+        if word in homo_dict:
+            cands.update(homo_dict[word])
+        return choice(list(cands))
+    elif part[0] == '(' and part[-1] == ')':
         word = part[1:-1]
         return choice([word, ''])
     else:
