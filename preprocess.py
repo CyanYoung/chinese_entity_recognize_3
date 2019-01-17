@@ -80,25 +80,6 @@ def sync_shuffle(list1, list2):
     return zip(*pairs)
 
 
-def merge_sent(path):
-    sents = dict()
-    pairs = list()
-    with open(path, 'r') as f:
-        for line in f:
-            line = line.strip()
-            if line:
-                pair = dict()
-                word, label = line.split()
-                pair['word'] = word
-                pair['label'] = label
-                pairs.append(pair)
-            elif pairs:
-                text = ''.join([pair['word'] for pair in pairs])
-                sents[text] = pairs
-                pairs = []
-    return sents
-
-
 def label_sent(path):
     sents = dict()
     for text, entity_str, label_str in pd.read_csv(path).values:
@@ -126,6 +107,25 @@ def label_sent(path):
             pair['label'] = label
             pairs.append(pair)
         sents[text] = pairs
+    return sents
+
+
+def merge_sent(path):
+    sents = dict()
+    pairs = list()
+    with open(path, 'r') as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                pair = dict()
+                word, label = line.split()
+                pair['word'] = word
+                pair['label'] = label
+                pairs.append(pair)
+            elif pairs:
+                text = ''.join([pair['word'] for pair in pairs])
+                sents[text] = pairs
+                pairs = []
     return sents
 
 
