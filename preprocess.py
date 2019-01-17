@@ -80,6 +80,25 @@ def sync_shuffle(list1, list2):
     return zip(*pairs)
 
 
+def merge_sent(path):
+    sents = dict()
+    pairs = list()
+    with open(path, 'r') as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                pair = dict()
+                word, label = line.split()
+                pair['word'] = word
+                pair['label'] = label
+                pairs.append(pair)
+            elif pairs:
+                text = ''.join([pair['word'] for pair in pairs])
+                sents[text] = pairs
+                pairs = []
+    return sents
+
+
 def label_sent(path):
     sents = dict()
     for text, entity_str, label_str in pd.read_csv(path).values:
@@ -136,7 +155,9 @@ def prepare(paths):
             for line in f:
                 slots[label].append(line.strip())
     gen_word_mat, gen_label_mat = generate(temps, slots, num=5000)
-    sents = label_sent(paths['univ'])
+    sent1s = merge_sent(paths['univ'])
+    sent2s = label_sent(paths['extra'])
+    sents = dict(sent1s, **sent2s)
     train_sents, test_sents = expand(sents, gen_word_mat, gen_label_mat)
     save(paths['train'], train_sents)
     save(paths['test'], test_sents)
@@ -144,9 +165,10 @@ def prepare(paths):
 
 if __name__ == '__main__':
     paths = dict()
-    paths['univ'] = 'data/univ.csv'
+    paths['univ'] = 'data/univ.txt'
     paths['train'] = 'data/train.json'
     paths['test'] = 'data/test.json'
     paths['temp'] = 'data/template.txt'
     paths['slot_dir'] = 'data/slot'
+    paths['extra'] = 'data/extra.csv'
     prepare(paths)
