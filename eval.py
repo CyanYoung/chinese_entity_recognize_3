@@ -6,6 +6,8 @@ from sklearn.metrics import f1_score, accuracy_score
 from recognize import predict
 
 
+seq_len = 50
+
 path_sent = 'data/test.json'
 path_label_ind = 'feat/label_ind.pkl'
 with open(path_sent, 'r') as f:
@@ -31,7 +33,8 @@ def test(name, sents):
         labels = list()
         for quaple in quaples:
             labels.append(quaple['label'])
-        label_mat.append(labels)
+        bound = min(len(text), seq_len)
+        label_mat.append(labels[:bound])
         pairs = predict(text, name)
         preds = [pred for word, pred in pairs]
         pred_mat.append(preds)
