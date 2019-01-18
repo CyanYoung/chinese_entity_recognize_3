@@ -33,8 +33,8 @@ def test(name, sents):
         labels = list()
         for quaple in quaples:
             labels.append(quaple['label'])
-        bound = min(len(text), seq_len)
-        label_mat.append(labels[:bound])
+        bound = len(text) - seq_len if len(text) > seq_len else 0
+        label_mat.append(labels[bound:])
         pairs = predict(text, name)
         preds = [pred for word, pred in pairs]
         pred_mat.append(preds)
