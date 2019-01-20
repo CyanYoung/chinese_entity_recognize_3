@@ -2,7 +2,7 @@
 
 #### 1.preprocess
 
-generate() 根据 template 采样实体进行填充、生成数据，() 表示可省去
+generate() 根据 template 采样实体进行填充、生成数据，可省去、替换
 
 merge_sent() 和 label_sent() 分别对 univ、extra 标注，汇总、打乱
 
