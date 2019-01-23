@@ -22,5 +22,5 @@ def rnn(embed_input, class_num):
     ba = Bidirectional(ra, merge_mode='concat')
     da = Dense(class_num, activation='softmax')
     x = ba(embed_input)
-    x = Dropout(0.5)(x)
+    x = Dropout(0.2)(x)
     return da(x)
