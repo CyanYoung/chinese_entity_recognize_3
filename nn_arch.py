@@ -1,4 +1,4 @@
-from keras.layers import LSTM, Conv1D, Dense, Bidirectional, Dropout, Multiply
+from keras.layers import Conv1D, LSTM, Dense, Bidirectional, Dropout, Multiply
 
 
 win_len = 7
