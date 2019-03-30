@@ -29,18 +29,18 @@ with open(path_label_ind, 'rb') as f:
 
 ind_labels = ind2label(label_inds)
 
-paths = {'cnn': 'model/cnn.h5',
-         'rnn': 'model/rnn.h5'}
+paths = {'cnn_crf': 'model/cnn_crf.h5',
+         'rnn_crf': 'model/rnn_crf.h5'}
 
-models = {'cnn': load_model(map_item('cnn', paths)),
-          'rnn': load_model(map_item('rnn', paths))}
+models = {'cnn_crf': load_model(map_item('cnn_crf', paths)),
+          'rnn_crf': load_model(map_item('rnn_crf', paths))}
 
 
 def predict(text, name):
     text = text.strip()
     seq = word2ind.texts_to_sequences([text])[0]
     pad_seq = pad_sequences([seq], maxlen=seq_len)
-    if name == 'cnn':
+    if name == 'cnn_crf':
         pad_seq = add_buf(pad_seq)
     model = map_item(name, models)
     probs = model.predict(pad_seq)[0]
@@ -56,5 +56,5 @@ def predict(text, name):
 if __name__ == '__main__':
     while True:
         text = input('text: ')
-        print('cnn: %s' % predict(text, 'cnn'))
-        print('rnn: %s' % predict(text, 'rnn'))
+        print('cnn_crf: %s' % predict(text, 'cnn_crf'))
+        print('rnn_crf: %s' % predict(text, 'rnn_crf'))
