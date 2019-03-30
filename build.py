@@ -1,7 +1,5 @@
 import pickle as pk
 
-import numpy as np
-
 from keras.models import Model
 from keras.layers import Input, Embedding
 from keras.optimizers import Adam
@@ -64,7 +62,6 @@ def fit(name, epoch, embed_mat, class_num, sents, labels):
     seq_len = len(sents[0])
     model = compile(name, embed_mat, seq_len, class_num)
     check_point = ModelCheckpoint(map_item(name, paths), monitor='val_loss', verbose=True, save_best_only=True)
-    labels = np.expand_dims(labels, -1)
     model.fit(sents, labels, batch_size=batch_size, epochs=epoch,
               verbose=True, callbacks=[check_point], validation_split=0.2)
 

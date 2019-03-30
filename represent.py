@@ -5,6 +5,7 @@ import numpy as np
 
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
+from keras.utils import to_categorical
 
 from util import sent2label
 
@@ -76,6 +77,7 @@ def align_sent(sents, path_sent, extra):
 def align_label(sents, path_label):
     with open(path_label_ind, 'rb') as f:
         label_inds = pk.load(f)
+    class_num = len(label_inds)
     ind_mat = list()
     for pairs in sents.values():
         inds = list()
@@ -83,6 +85,7 @@ def align_label(sents, path_label):
             inds.append(label_inds[pair['label']])
         ind_mat.append(inds)
     pad_inds = pad_sequences(ind_mat, maxlen=seq_len)
+    pad_inds = to_categorical(pad_inds, num_classes=class_num)
     with open(path_label, 'wb') as f:
         pk.dump(pad_inds, f)
 
