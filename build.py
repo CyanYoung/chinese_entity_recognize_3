@@ -8,7 +8,9 @@ from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint
 from keras.utils import plot_model
 
-from nn_arch import cnn, rnn
+from keras_contrib.layers import CRF
+
+from nn_arch import cnn_crf, rnn_crf
 
 from util import map_item
 
@@ -33,13 +35,13 @@ with open(path_label, 'rb') as f:
 
 class_num = len(label_inds)
 
-funcs = {'cnn': cnn,
-         'rnn': rnn}
+funcs = {'cnn_crf': cnn_crf,
+         'rnn_crf': rnn_crf}
 
-paths = {'cnn': 'model/cnn.h5',
-         'rnn': 'model/rnn.h5',
-         'cnn_plot': 'model/plot/cnn.png',
-         'rnn_plot': 'model/plot/rnn.png'}
+paths = {'cnn_crf': 'model/cnn_crf.h5',
+         'rnn_crf': 'model/rnn_crf.h5',
+         'cnn_crf_plot': 'model/plot/cnn_crf_crf.png',
+         'rnn_crf_plot': 'model/plot/rnn_crf_crf.png'}
 
 
 def compile(name, embed_mat, seq_len, class_num):
@@ -49,11 +51,12 @@ def compile(name, embed_mat, seq_len, class_num):
     input = Input(shape=(seq_len,))
     embed_input = embed(input)
     func = map_item(name, funcs)
-    output = func(embed_input, class_num)
+    crf = CRF(class_num)
+    output = func(embed_input, crf)
     model = Model(input, output)
     model.summary()
     plot_model(model, map_item(name + '_plot', paths), show_shapes=True)
-    model.compile(loss='sparse_categorical_crossentropy', optimizer=Adam(lr=0.001), metrics=['accuracy'])
+    model.compile(loss=crf.loss_function, optimizer=Adam(lr=0.001), metrics=[crf.accuracy])
     return model
 
 
