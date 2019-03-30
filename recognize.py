@@ -18,6 +18,8 @@ from util import map_item
 
 def define_model(name, embed_mat, seq_len, class_num):
     vocab_num, embed_len = embed_mat.shape
+    if name == 'cnn_crf':
+        seq_len = seq_len + win_len - 1
     embed = Embedding(input_dim=vocab_num, output_dim=embed_len, input_length=seq_len)
     input = Input(shape=(seq_len,))
     embed_input = embed(input)
@@ -40,6 +42,7 @@ def ind2label(label_inds):
     return ind_labels
 
 
+win_len = 7
 seq_len = 50
 
 path_word2ind = 'model/word2ind.pkl'
