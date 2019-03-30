@@ -2,13 +2,35 @@ import pickle as pk
 
 import numpy as np
 
-from keras.models import load_model
+from keras.models import Model
+from keras.layers import Input, Embedding
+
+from keras_contrib.layers import CRF
 
 from keras.preprocessing.sequence import pad_sequences
 
 from represent import add_buf
 
+from nn_arch import cnn_crf, rnn_crf
+
 from util import map_item
+
+
+def define_model(name, embed_mat, seq_len, class_num):
+    vocab_num, embed_len = embed_mat.shape
+    embed = Embedding(input_dim=vocab_num, output_dim=embed_len, input_length=seq_len)
+    input = Input(shape=(seq_len,))
+    embed_input = embed(input)
+    func = map_item(name, funcs)
+    crf = CRF(class_num)
+    output = func(embed_input, crf)
+    return Model(input, output)
+
+
+def load_model(name, embed_mat, seq_len, class_num):
+    model = define_model(name, embed_mat, seq_len, class_num)
+    model.load_weights(map_item(name, paths), paths)
+    return model
 
 
 def ind2label(label_inds):
@@ -21,19 +43,27 @@ def ind2label(label_inds):
 seq_len = 50
 
 path_word2ind = 'model/word2ind.pkl'
+path_embed = 'feat/embed.pkl'
 path_label_ind = 'feat/label_ind.pkl'
 with open(path_word2ind, 'rb') as f:
     word2ind = pk.load(f)
+with open(path_embed, 'rb') as f:
+    embed_mat = pk.load(f)
 with open(path_label_ind, 'rb') as f:
     label_inds = pk.load(f)
 
 ind_labels = ind2label(label_inds)
 
+class_num = len(label_inds)
+
+funcs = {'cnn_crf': cnn_crf,
+         'rnn_crf': rnn_crf}
+
 paths = {'cnn_crf': 'model/cnn_crf.h5',
          'rnn_crf': 'model/rnn_crf.h5'}
 
-models = {'cnn_crf': load_model(map_item('cnn_crf', paths)),
-          'rnn_crf': load_model(map_item('rnn_crf', paths))}
+models = {'cnn_crf': load_model('cnn_crf', embed_mat, seq_len, class_num),
+          'rnn_crf': load_model('rnn_crf', embed_mat, seq_len, class_num)}
 
 
 def predict(text, name):
