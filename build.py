@@ -38,8 +38,8 @@ funcs = {'cnn_crf': cnn_crf,
 
 paths = {'cnn_crf': 'model/cnn_crf.h5',
          'rnn_crf': 'model/rnn_crf.h5',
-         'cnn_crf_plot': 'model/plot/cnn_crf_crf.png',
-         'rnn_crf_plot': 'model/plot/rnn_crf_crf.png'}
+         'cnn_crf_plot': 'model/plot/cnn_crf.png',
+         'rnn_crf_plot': 'model/plot/rnn_crf.png'}
 
 
 def compile(name, embed_mat, seq_len, class_num):
