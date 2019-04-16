@@ -70,7 +70,6 @@ models = {'cnn_crf': load_model('cnn_crf', embed_mat, seq_len, class_num),
 
 
 def predict(text, name):
-    text = text.strip()
     seq = word2ind.texts_to_sequences([text])[0]
     pad_seq = pad_sequences([seq], maxlen=seq_len)
     if name == 'cnn_crf':
